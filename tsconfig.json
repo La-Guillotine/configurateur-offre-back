@@ -1,6 +1,7 @@
 // tsconfig.json
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "pretty": true,
