@@ -3,6 +3,8 @@ import * as express from "express";
 // import * as bodyParser from "body-parser";
 import * as cors from 'cors';
 import { Routes } from "./config/routes";
+import { database } from "./config/database";
+import { connected } from "process";
 // import * as swaggerUi from 'swagger-ui-express'
 // import * as swaggerDocument from '../swagger.js'
 // import { checkTokenMiddleware } from "./config/auth"
@@ -30,6 +32,10 @@ class App {
         this.app.listen(process.env.PORT, () => {
             console.log("Fonctionne sur le port "+process.env.PORT)
         })
+
+        database.authenticate()
+        .then(() => console.log('Succesfuly connected to db.'))
+        .then(() => console.log(database.models))
     }
 }
 

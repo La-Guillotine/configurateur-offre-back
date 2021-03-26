@@ -3,7 +3,8 @@ import { Product } from './product.model';
 import { ProductOption } from './product_option.model';
 
 @Table({
-    timestamps: false
+    timestamps: false,
+    tableName: 'option'
   })
 export class Option extends Model{
     @PrimaryKey

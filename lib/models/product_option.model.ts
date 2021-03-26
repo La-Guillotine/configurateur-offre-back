@@ -3,7 +3,8 @@ import { Product } from './product.model';
 import { Option } from './option.model';
 
 @Table({
-    timestamps: false
+    timestamps: false,
+    tableName: 'product_option'
   })
 export class ProductOption extends Model{
     @ForeignKey(() => Product)

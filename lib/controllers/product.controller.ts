@@ -6,20 +6,24 @@ export class ProductController {
 
     public async getProducts (req: Request, res: Response) {
 
-        Product.findAll<Product>()
+        Product.findAll<Product>({
+            include: [Product.associations.options]
+        })
             .then((products: Array<Product>) => res.json(products))
             .catch((err: Error) => res.status(500).json(err))
         ;
+        
     }
 
-    // public getProduct (req: Request, res: Response) {
-    //     Product.findOne({ 
-    //         where: { id: req.params.id }
-    //      })
-    //         .then((product: Product) => res.json(product))
-    //         .catch((err: Error) => res.status(500).json(err))
-    //     ;
-    // }
+    public getProduct (req: Request, res: Response) {
+        Product.findOne({ 
+            where: { id: req.params.id },
+            include: [Product.associations.options]
+         })
+            .then((product: Product) => res.json(product))
+            .catch((err: Error) => res.status(500).json(err))
+        ;
+    }
 
     // public addProduct (req: Request, res: Response) {
     //     Product.create({ name: req.body.name,brand: req.body.brand })

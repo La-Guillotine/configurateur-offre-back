@@ -1,9 +1,9 @@
 import { Table, Column, Model, HasMany, PrimaryKey, DataType, BelongsToMany } from 'sequelize-typescript';
-import { ProductOption } from './product_option.model';
-import { Option } from './option.model';
+import { Order } from './order.model';
 
 @Table({
-    timestamps: false
+    timestamps: false,
+    tableName: 'shoppingcard'
   })
 export class ShoppingCard extends Model{
     @PrimaryKey
@@ -12,5 +12,8 @@ export class ShoppingCard extends Model{
       autoIncrement: true
   })
     id : number;
+
+    @HasMany(() => Order)
+    orders: Order[]
 
 }
