@@ -22,17 +22,15 @@ CREATE TABLE IF NOT EXISTS `option` (
   `name` varchar(50) NOT NULL DEFAULT '0',
   `price` decimal(5,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table configurateur.option : ~0 rows (environ)
-/*!40000 ALTER TABLE `option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `option` ENABLE KEYS */;
+-- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table configurateur. order
 CREATE TABLE IF NOT EXISTS `order` (
   `shoppingcardId` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
-  `optionId` int(11) NOT NULL,
+  `optionId` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`shoppingcardId`,`productId`,`optionId`),
   KEY `FK__product_order` (`productId`),
   KEY `FK__option_order` (`optionId`),
@@ -41,24 +39,18 @@ CREATE TABLE IF NOT EXISTS `order` (
   CONSTRAINT `FK__shoppingcard_order` FOREIGN KEY (`shoppingcardId`) REFERENCES `shoppingcard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table configurateur.order : ~0 rows (environ)
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+-- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table configurateur. product
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
-  `description` text DEFAULT '0',
+  `description` text DEFAULT NULL,
   `price` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table configurateur.product : ~0 rows (environ)
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` (`id`, `name`, `description`, `price`) VALUES
-	(1, 'chaise', 'petit meuble permettant de s\'assoir bien confortablement', 29.90);
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+-- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table configurateur. product_option
 CREATE TABLE IF NOT EXISTS `product_option` (
@@ -70,19 +62,15 @@ CREATE TABLE IF NOT EXISTS `product_option` (
   CONSTRAINT `FK__product` FOREIGN KEY (`productId`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table configurateur.product_option : ~0 rows (environ)
-/*!40000 ALTER TABLE `product_option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_option` ENABLE KEYS */;
+-- Les données exportées n'étaient pas sélectionnées.
 
 -- Listage de la structure de la table configurateur. shoppingcard
 CREATE TABLE IF NOT EXISTS `shoppingcard` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table configurateur.shoppingcard : ~0 rows (environ)
-/*!40000 ALTER TABLE `shoppingcard` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shoppingcard` ENABLE KEYS */;
+-- Les données exportées n'étaient pas sélectionnées.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
