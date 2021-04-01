@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "npx ts-node lib/index.ts",
+    "test": "mocha -r ts-node/register lib/tests/* --timeout 20000",
     "pm2": "pm2 start pm2.json --watch"
   },
   "repository": {
