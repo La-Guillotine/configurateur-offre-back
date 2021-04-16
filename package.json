@@ -6,6 +6,10 @@
   "scripts": {
     "start": "npx ts-node lib/index.ts",
     "test": "mocha -r ts-node/register lib/tests/* --timeout 20000",
+    "unit-test": "mocha -r ts-node/register lib/tests/unit-tests/*",
+    "login-test": "mocha -r ts-node/register lib/tests/login-tests/*",
+    "bourse-test": "mocha -r ts-node/register lib/tests/bourses-tests/*",
+    "lift-test": "mocha -r ts-node/register lib/tests/ascenseur-mock/*",
     "pm2": "pm2 start pm2.json --watch"
   },
   "repository": {
@@ -19,6 +23,7 @@
     "@types/node": "^14.14.35",
     "body-parser": "^1.19.0",
     "chai": "^4.3.4",
+    "chai-asserttype-extra": "^1.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -29,6 +34,7 @@
     "pm2": "^4.5.0",
     "sequelize": "^6.6.2",
     "sequelize-typescript": "^2.1.0",
+    "sinon": "^10.0.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   }
