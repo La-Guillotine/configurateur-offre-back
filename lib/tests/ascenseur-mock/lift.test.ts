@@ -56,7 +56,7 @@ describe('Lift Tests', () => {
         // Vérification des appels (nb + bons arguments)
         sinon.assert.calledOnce(mockLogic.getDirection);
 
-        // sinon.assert.calledWithExactly(mockLogic.getDirection, 2, 3, [3, 5]);
+        sinon.assert.calledWithExactly(mockLogic.getDirection, 2, 3, [3, 5]);
         
         // 1er appel dans l'execute_iteration() et 2nd dans le assert.isTrue()
         sinon.assert.calledTwice(mockLogic.shouldStop);

@@ -34,10 +34,7 @@ export class Lift {
                 if(this.inside_button === this.currentFloor)this.inside_button = null;
                 // Si l'étage d'arrivée est dans les étages appellés (extérieur)
                 if(this.asked_buttons.includes(this.currentFloor)){
-                    this.asked_buttons.splice(
-                        this.asked_buttons.indexOf(this.currentFloor),
-                        1
-                    );
+                    this.asked_buttons = this.asked_buttons.filter(floor => floor !== this.currentFloor);
                 }
             }
             console.log("Lift moved_to " + this.currentFloor);
