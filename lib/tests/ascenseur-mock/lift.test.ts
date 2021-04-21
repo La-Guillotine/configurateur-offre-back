@@ -45,21 +45,20 @@ describe('Lift Tests', () => {
         lift.press_inside_button(3);
         lift.press_call_button(3);
         lift.press_call_button(5);
+        
         //Vérification suppression étage demandé
         assert.strictEqual(lift.inside_button, 3);
         lift.execute_iteration();
         assert.isNull(lift.inside_button);
         // Vérification suppression étage appellé si atteint par l'ascenseur
+
         assert.strictEqual(lift.currentFloor, 3);
-        assert.isTrue(mockLogic.shouldStop(3, 3, [3, 5]));
         expect(lift.asked_buttons).to.deep.equal([5]);
         // Vérification des appels (nb + bons arguments)
         sinon.assert.calledOnce(mockLogic.getDirection);
-
         sinon.assert.calledWithExactly(mockLogic.getDirection, 2, 3, [3, 5]);
         
-        // 1er appel dans l'execute_iteration() et 2nd dans le assert.isTrue()
-        sinon.assert.calledTwice(mockLogic.shouldStop);
+        sinon.assert.calledOnce(mockLogic.shouldStop);
         sinon.assert.calledWithExactly(mockLogic.shouldStop, 3, 3, [3, 5]);
     });
     it('test_with_buttons_go_up_or_down', () => {
